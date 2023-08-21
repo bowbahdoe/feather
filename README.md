@@ -1,3 +1,17 @@
+# Feather
+
+This is a fork of the original Feather dependency injection library with the following changes
+
+- Bumped minimum version to Java 9
+- Added a module-info
+- Made all classes final
+- Moved from `javax.inject` to `jakarta.inject`
+- Repackaged under `dev.mccue.feather`
+
+The original contents of the readme are below. Consult the source repo for any more in-depth documentation.
+
+----------
+
 #### About Feather
 [Feather](http://zsoltherpai.github.io/feather) is an ultra-lightweight dependency injection ([JSR-330](https://jcp.org/en/jsr/detail?id=330 "JSR-330"))
 library for Java and Android. Dependency injection frameworks are often perceived as "magical" and complex. 
