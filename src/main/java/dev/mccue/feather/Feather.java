@@ -26,13 +26,7 @@ public final class Feather {
     }
 
     private Feather(Iterable<?> modules) {
-        providers.put(Key.of(Feather.class), new Provider() {
-                    @Override
-                    public Object get() {
-                        return this;
-                    }
-                }
-        );
+        providers.put(Key.of(Feather.class), () -> this);
         for (final Object module : modules) {
             if (module instanceof Class) {
                 throw new FeatherException(String.format("%s provided as class instead of an instance.", ((Class) module).getName()));
