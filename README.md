@@ -7,7 +7,8 @@ This is a fork of the original Feather dependency injection library with the fol
 - Made all classes final
 - Moved from `javax.inject` to `jakarta.inject`
 - Repackaged under `dev.mccue.feather`
-
+- Fixed a bug where asking for an instance of `Feather` to be injected would fail.
+- Addressed issue where underlying exception not always forwarded to `FeatherException` (PR [#8](https://github.com/zsoltherpai/feather/pull/8))
 The original contents of the readme are below. Consult the source repo for any more in-depth documentation.
 
 
@@ -15,7 +16,7 @@ The original contents of the readme are below. Consult the source repo for any m
 <dependency>
     <groupId>dev.mccue</groupId>
     <artifactId>feather</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
 </dependency>
 ```
 
