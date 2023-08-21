@@ -10,6 +10,18 @@ This is a fork of the original Feather dependency injection library with the fol
 
 The original contents of the readme are below. Consult the source repo for any more in-depth documentation.
 
+
+```xml
+<dependency>
+    <groupId>dev.mccue</groupId>
+    <artifactId>feather</artifactId>
+    <version>0.0.1</version>
+</dependency>
+```
+
+This codebase is tiny, so I can reasonably fix any bugs as they come up, but I do not intend to
+add any new features.
+
 ----------
 
 #### About Feather
