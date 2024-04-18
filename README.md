@@ -17,7 +17,7 @@ The original contents of the readme are below. Consult the source repo for any m
 <dependency>
     <groupId>dev.mccue</groupId>
     <artifactId>feather</artifactId>
-    <version>0.0.2</version>
+    <version>2023.08.21</version>
 </dependency>
 ```
 
