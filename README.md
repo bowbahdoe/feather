@@ -2,7 +2,7 @@
 
 This is a fork of the original Feather dependency injection library with the following changes
 
-- Bumped minimum version to Java 9
+- Bumped minimum version to Java 21
 - Added a module-info
 - Made all classes final
 - Moved from `javax.inject` to `jakarta.inject`
@@ -17,7 +17,7 @@ The original contents of the readme are below. Consult the source repo for any m
 <dependency>
     <groupId>dev.mccue</groupId>
     <artifactId>feather</artifactId>
-    <version>2023.08.21</version>
+    <version>2024.09.07</version>
 </dependency>
 ```
 

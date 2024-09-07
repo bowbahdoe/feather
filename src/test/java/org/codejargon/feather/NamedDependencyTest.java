@@ -7,14 +7,16 @@ import org.junit.Test;
 
 import jakarta.inject.Named;
 
+import java.lang.invoke.MethodHandles;
+
 import static org.junit.Assert.assertEquals;
 
 public class NamedDependencyTest {
     @Test
     public void namedInstanceWithModule() {
         Feather feather = Feather.with(new HelloWorldModule());
-        assertEquals("Hello!", feather.instance(Key.of(String.class, "hello")));
-        assertEquals("Hi!", feather.instance(Key.of(String.class, "hi")));
+        assertEquals("Hello!", feather.instance(Key.of(String.class, "hello"), MethodHandles.lookup()));
+        assertEquals("Hi!", feather.instance(Key.of(String.class, "hi"), MethodHandles.lookup()));
     }
 
     public static class HelloWorldModule {

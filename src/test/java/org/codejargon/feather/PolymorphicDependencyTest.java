@@ -8,14 +8,16 @@ import org.junit.Test;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
+import java.lang.invoke.MethodHandles;
+
 import static org.junit.Assert.assertEquals;
 
 public class PolymorphicDependencyTest {
     @Test
     public void multipleImplementations() {
         Feather feather = Feather.with(new Module());
-        assertEquals(FooA.class, feather.instance(Key.of(Foo.class, "A")).getClass());
-        assertEquals(FooB.class, feather.instance(Key.of(Foo.class, "B")).getClass());
+        assertEquals(FooA.class, feather.instance(Key.of(Foo.class, "A"), MethodHandles.lookup()).getClass());
+        assertEquals(FooB.class, feather.instance(Key.of(Foo.class, "B"), MethodHandles.lookup()).getClass());
     }
 
     public static class Module {

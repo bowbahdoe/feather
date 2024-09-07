@@ -4,6 +4,8 @@ import dev.mccue.feather.Feather;
 import dev.mccue.feather.Provides;
 import org.junit.Test;
 
+import java.lang.invoke.MethodHandles;
+
 import static org.junit.Assert.assertEquals;
 
 public class ModuleOverrideTest {
@@ -16,8 +18,8 @@ public class ModuleOverrideTest {
 
     @Test
     public void moduleOverwrittenBySubClass() {
-        assertEquals("foo", Feather.with(new FooModule()).instance(String.class));
-        assertEquals("bar", Feather.with(new FooOverrideModule()).instance(String.class));
+        assertEquals("foo", Feather.with(new FooModule()).instance(String.class, MethodHandles.lookup()));
+        assertEquals("bar", Feather.with(new FooOverrideModule()).instance(String.class, MethodHandles.lookup()));
     }
 
     public static class Plain {

@@ -5,6 +5,8 @@ import dev.mccue.feather.FeatherException;
 import dev.mccue.feather.Provides;
 import org.junit.Test;
 
+import java.lang.invoke.MethodHandles;
+
 import static org.junit.Assert.assertNotNull;
 
 public class PojoProvidedThroughModuleTest {
@@ -17,7 +19,7 @@ public class PojoProvidedThroughModuleTest {
     @Test
     public void pojoProvided() {
         Feather feather = Feather.with(new Module());
-        assertNotNull(feather.instance(Pojo.class));
+        assertNotNull(feather.instance(Pojo.class, MethodHandles.lookup()));
     }
 
     public static class Module {

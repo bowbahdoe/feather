@@ -9,6 +9,7 @@ import jakarta.inject.Inject;
 import jakarta.inject.Qualifier;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
+import java.lang.invoke.MethodHandles;
 
 import static org.junit.Assert.assertEquals;
 
@@ -16,14 +17,14 @@ public class QualifiedDependencyTest {
     @Test
     public void qualifiedInstances() {
         Feather feather = Feather.with(new Module());
-        assertEquals(FooA.class, feather.instance(Key.of(Foo.class, A.class)).getClass());
-        assertEquals(FooB.class, feather.instance(Key.of(Foo.class, B.class)).getClass());
+        assertEquals(FooA.class, feather.instance(Key.of(Foo.class, A.class), MethodHandles.lookup()).getClass());
+        assertEquals(FooB.class, feather.instance(Key.of(Foo.class, B.class), MethodHandles.lookup()).getClass());
     }
 
     @Test
     public void injectedQualified() {
         Feather feather = Feather.with(new Module());
-        Dummy dummy = feather.instance(Dummy.class);
+        Dummy dummy = feather.instance(Dummy.class, MethodHandles.lookup());
         assertEquals(FooB.class, dummy.foo.getClass());
     }
 
@@ -31,7 +32,7 @@ public class QualifiedDependencyTest {
     public void fieldInjectedQualified() {
         Feather feather = Feather.with(new Module());
         DummyTestUnit dummy = new DummyTestUnit();
-        feather.injectFields(dummy);
+        feather.injectFields(dummy, MethodHandles.lookup());
         assertEquals(FooA.class, dummy.foo.getClass());
     }
 

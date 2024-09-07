@@ -5,6 +5,8 @@ import org.junit.Test;
 
 import jakarta.inject.Inject;
 
+import java.lang.invoke.MethodHandles;
+
 import static org.junit.Assert.assertNotNull;
 
 public class FieldInjectionTest {
@@ -12,7 +14,7 @@ public class FieldInjectionTest {
     public void fieldsInjected() {
         Feather feather = Feather.with();
         Target target = new Target();
-        feather.injectFields(target);
+        feather.injectFields(target, MethodHandles.lookup());
         assertNotNull(target.a);
     }
 
