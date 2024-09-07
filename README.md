@@ -9,6 +9,7 @@ This is a fork of the original Feather dependency injection library with the fol
 - Repackaged under `dev.mccue.feather`
 - Fixed a bug where asking for an instance of `Feather` to be injected would fail.
 - Addressed issue where underlying exception not always forwarded to `FeatherException` (PR [#8](https://github.com/zsoltherpai/feather/pull/8))
+- Retrofit all operations to use a `MethodHandles.Lookup`
 
 The original contents of the readme are below. Consult the source repo for any more in-depth documentation.
 
