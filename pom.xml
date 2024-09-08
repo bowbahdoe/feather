@@ -6,7 +6,7 @@
 
     <groupId>dev.mccue</groupId>
     <artifactId>feather</artifactId>
-    <version>2024.09.07</version>
+    <version>2024.09.07.1</version>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
