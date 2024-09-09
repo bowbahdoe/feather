@@ -6,11 +6,11 @@
 
     <groupId>dev.mccue</groupId>
     <artifactId>feather</artifactId>
-    <version>2024.09.09</version>
+    <version>2024.09.09.1</version>
 
     <properties>
-        <maven.compiler.source>9</maven.compiler.source>
-        <maven.compiler.target>9</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 

@@ -10,13 +10,14 @@ import java.lang.reflect.*;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
-public final class Feather {
+public final class Feather implements DependencyInjector {
     private final Map<Key<?>, Provider<?>> providers = new ConcurrentHashMap<>();
     private final Map<Key<?>, Object> singletons = new ConcurrentHashMap<>();
     private final Map<Class<?>, Object[][]> injectFields = new ConcurrentHashMap<>(0);
 
     private Feather(Iterable<?> modules) {
         providers.put(Key.of(Feather.class), () -> this);
+        providers.put(Key.of(DependencyInjector.class), () -> this);
         for (final Object module : modules) {
             if (module instanceof Class) {
                 throw new FeatherException(String.format("%s provided as class instead of an instance.", ((Class<?>) module).getName()));
@@ -161,6 +162,7 @@ public final class Feather {
     /**
      * @return an instance of type
      */
+    @Override
     public <T> T instance(Class<T> type) {
         return provider(Key.of(type), null).get();
     }
@@ -168,6 +170,7 @@ public final class Feather {
     /**
      * @return instance specified by key (type and qualifier)
      */
+    @Override
     public <T> T instance(Key<T> key) {
         return provider(key, null).get();
     }
@@ -175,6 +178,7 @@ public final class Feather {
     /**
      * @return provider of type
      */
+    @Override
     public <T> Provider<T> provider(Class<T> type) {
         return provider(Key.of(type), null);
     }
@@ -182,6 +186,7 @@ public final class Feather {
     /**
      * @return provider of key (type, qualifier)
      */
+    @Override
     public <T> Provider<T> provider(Key<T> key) {
         return provider(key, null);
     }
@@ -189,6 +194,7 @@ public final class Feather {
     /**
      * Injects fields to the target object
      */
+    @Override
     public void injectFields(Object target) {
         if (!injectFields.containsKey(target.getClass())) {
             injectFields.put(target.getClass(), injectFields(target.getClass()));
